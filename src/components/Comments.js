@@ -1,26 +1,15 @@
 import React from "react";
-
-
+import Comment from "./Comment";
 
 function Comments({ comments }) {
+  const commentList = comments.map((comment) => <Comment comment={comment} />);
 
-    // function CommentSection() {
-    //     comments.map((comment)=>{
-    //         return (
-    //             <div>
-    //                 <h4>{comment.user}</h4>
-    //                 <h6>{comment.comment}</h6>
-    //             </div>
-    //         )
-    //     })
-    // }
-    
-    return (
-        <div>
-        <h3>{comments.length} Comments</h3>
-        {/* <CommentSection /> */}
-        </div>
-    )
+  return (
+    <div>
+      <h3>{comments.length} Comments</h3>
+      {commentList}
+    </div>
+  );
 }
 
-export default Comments
+export default Comments;

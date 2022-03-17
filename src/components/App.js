@@ -7,7 +7,7 @@ function App() {
   console.log("Here's your data:", video);
   const views = video.views;
   const uploadDate = video.createdAt;
-
+  const [showComments, setShowComments] = useState(true)
   const [upvotes, setUpvotes] = useState(video.upvotes);
   function handleUpvotes() {
     setUpvotes(upvotes + 1);
@@ -18,8 +18,10 @@ function App() {
   }
 
   const comments = video.comments
-  
-
+  function handleShowComments() {
+    setShowComments(showComments=> !showComments)
+    console.log(showComments)
+  }
 
   return (
     <div className="App">
@@ -40,8 +42,9 @@ function App() {
         upvotes={upvotes}
         downvotes={downvotes}
       />
-      <button>toggleComments</button>
-      <Comments comments={comments} />
+      <button onClick={handleShowComments}>{showComments ? "Hide Comments" : "Show Comments"}</button>
+      {showComments && <Comments  comments={comments} /> }
+      
     </div>
   );
 }
